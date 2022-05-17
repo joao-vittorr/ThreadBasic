@@ -1,5 +1,5 @@
 package atividade;
-import java.io.File;
+
 
 
 public class Verifica {
@@ -9,8 +9,11 @@ public class Verifica {
 	    
 	    public static void main(String[] args)
 	    {
+	    	
+	    	
 	    	Thread Th1 = new th1();
 	    	Th1.start();
+    	
 	    	
 	    }
 	}
