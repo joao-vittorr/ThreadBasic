@@ -6,13 +6,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class th2 extends Thread{
 	
 	@Override
 	public void run() {
-		System.out.println("Tem Um novo arquivo aqui");
 		
 		 Scanner in = null;
 		 int soma = 0;
@@ -39,7 +41,7 @@ public class th2 extends Thread{
 		        				int num = Character.getNumericValue(numero[x]);
 		        				soma = num + soma;
 		        			}
-		        			
+		        			in.close();
 		        			File resultado = new File("E:\\\\Documentos\\\\TADS-IFRN2020.1\\\\SISTEMAS DISTRIBUIDOS\\\\Pasta03\\\\Resultado.txt");
 		        			if(resultado.exists()) {
 		        				FileWriter fileWriter = new FileWriter(resultado, true);
@@ -50,21 +52,27 @@ public class th2 extends Thread{
 		        			}else {
 		        				File arq = new File(diretorioResult, "Resultado.txt");
 		        				arq.createNewFile();
-		        				FileWriter fileWriter = new FileWriter(resultado, true);
+		        				FileWriter fileWriter = new FileWriter(resultado, false);
 		        				PrintWriter printWriter = new PrintWriter(fileWriter);
 		        				printWriter.println(arr[i] + "=" + soma);
 		        				printWriter.flush();
 		        				printWriter.close();
 		        				
 		        			}
-		        			File arquivo = new File(diretorio, "E:\\\\Documentos\\\\TADS-IFRN2020.1\\\\SISTEMAS DISTRIBUIDOS\\\\Pasta02\\\\" + arr[i]);
-		        			arquivo.delete();
+		        			File arquivo = new File("E:\\Documentos\\TADS-IFRN2020.1\\SISTEMAS DISTRIBUIDOS\\Pasta02\\" + arr[i]);
+		        			if(arquivo.delete()) {
+		        				System.out.println("Arquivo Excluido:");
+		        				System.out.println(arquivo);
+		        			}else {
+		        				System.out.println("Erro na Exclusão!");
+		        				System.out.println(arquivo);
+		        			}
 		        			soma = 0;
 		        			}
 		                }
 		            }
 		        
-		        Thread.sleep(3000);
+		        Thread.sleep(10000);
 		       }
 		 	
 		} catch (IOException | InterruptedException e) {
