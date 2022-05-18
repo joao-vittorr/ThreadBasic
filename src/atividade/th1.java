@@ -28,12 +28,6 @@ public class th1 extends Thread {
 	                    boolean transferir = arquivo.renameTo(new File(diretorio2, arquivo.getName()));
 	                }
 	                	                 
-	               /* File file = new File("E:\\Documentos\\TADS-IFRN2020.1\\SISTEMAS DISTRIBUIDOS\\Pasta01");
-	                File[] arquivos = file.listFiles();
-
-	                for (int i=0; i<file.length(); i++) {
-	                    System.out.println(arquivos[i]);
-	                }*/
 	                
 	            }else {
 	            	System.out.println("Pasta Vázia!");
